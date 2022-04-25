@@ -21,8 +21,8 @@ namespace DatabaseFirstLINQ
             //ProblemFour();
             //ProblemFive();
             //ProblemSix();
-            ProblemSeven();
-            //ProblemEight();
+            //ProblemSeven();
+            ProblemEight();
             //ProblemNine();
             //ProblemTen();
             //ProblemEleven();
@@ -140,12 +140,32 @@ namespace DatabaseFirstLINQ
             }
         }
 
-        //private void ProblemEight()
-        //{
-        //    // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
-        //    // Then print the product's name, price, and quantity to the console.
+        private void ProblemEight()
+        {
+            // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
+            // Then print the product's name, price, and quantity to the console. Console.WriteLine($"Name: {product2.Name}")
 
-        //}
+            var products = _context.ShoppingCarts.Include(s => s.User).Include(s => s.Product).Where(s => s.User.Email == "afton@gmail.com");
+
+            foreach (ShoppingCart product in products)
+            {
+                Console.WriteLine($"Name: {product.Product.Name} Price: {product.Product.Price} Quantity: {product.Quantity}");
+            }
+            
+            //foreach (User user in userId)
+            //{
+            //    var shoppingCart = _context.ShoppingCarts.Where(s => s.UserId == user.Id);
+            //    foreach (ShoppingCart product in shoppingCart)
+            //    {
+            //        var products2 = _context.Products.Where(p => p.Id == product.ProductId);
+            //        foreach (Product userProducts in products2)
+            //        {
+            //            Console.WriteLine($"Name: {userProducts.Name} Price: {userProducts.Price} Quantity: {product.Quantity}");
+            //        }
+            //    }
+            //}
+
+        }
 
         //private void ProblemNine()
         //{
