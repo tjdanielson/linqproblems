@@ -24,7 +24,7 @@ namespace DatabaseFirstLINQ
             //ProblemSeven();
             //ProblemEight();
             //ProblemNine();
-            //ProblemTen();
+            ProblemTen();
             //ProblemEleven();
             //ProblemTwelve();
             //ProblemThirteen();
@@ -32,7 +32,7 @@ namespace DatabaseFirstLINQ
             //ProblemFifteen();
             //ProblemSixteen();
             //ProblemSeventeen();
-            ProblemEighteen();
+            //ProblemEighteen();
             //ProblemNineteen();
             //ProblemTwenty();
         }
@@ -165,19 +165,32 @@ namespace DatabaseFirstLINQ
    
         }
 
-        //private void ProblemTen()
-        //{
-        //    // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
-        //    // Then print the user's email as well as the product's name, price, and quantity to the console.
+        private void ProblemTen()
+        {
+            // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
+            // Then print the user's email as well as the product's name, price, and quantity to the console. userIds.Contains(s => s.UserId)
 
-        //    var role = _context.Roles.Include(r => r.UserRoles).Where(r => r.RoleName == "Employee");
-        //    var users = _context.Users.Include(u => u.UserRoles).Where(u => u.UserRoles.Contains(roles));
+            //var role = _context.Roles.Where(r => r.UserRole.RoleName == "Employee").SingleOrDefault(); 
+            //var users = _context.Users.Include(u => u.UserRoles).Where(u => u.UserRoles.);
+            //.Select(u => u.User.Id)
+            var usersInRole = _context.UserRoles.Where(u => u.Role.RoleName == "Employee").Select(u => u.User.Id);
+            //var cart = _context.ShoppingCarts.Include(s => s.User).Include(s => s.Product).Where(s => s.User.UserRoles.Contains(usersInRole));
+            //var cart = _context.ShoppingCarts.Where(sc => ShoppingCart.Contains(userIds));
+            var users = _context.Users.Where(u => u.Id.Equals(usersInRole));
+            //var cart = _context.ShoppingCarts.Include(s => s.User).Include(s => s.Product).Where(s => s.User.UserRoles.Contains(usersInRole));
 
+            //foreach (UserRole user in usersInRole)
+            //{
+            //    var cart2 = _context.ShoppingCarts.Include(s => s.User).Include(s => s.Product).Where(s => s.User.UserRoles.Contains(user));
+            //    Console.WriteLine($"{user.UserId}");
+            //}
+                
+            //foreach (ShoppingCart product in cart)
+            //    {
+            //        Console.WriteLine($"Product Name: {product.Product.Name}");
+            //    }
 
-        //    var cart = _context.ShoppingCarts.Include(s => s.User).Include(s => s.Product).Include(s => s.User.UserRoles).Select(s => s.User.UserRoles.RoleId == 2);
-
-
-        //}
+        }
 
         //// <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
 
@@ -287,23 +300,26 @@ namespace DatabaseFirstLINQ
 
         }
 
-        //private void ProblemNineteen()
-        //{
-        //    // Delete all of the product relationships to the user with the email "oda@gmail.com" in the ShoppingCart table using LINQ.
-        //    // HINT: Loop
-        //    var shoppingCartProducts = _context.ShoppingCarts.Where(sc => sc.User.Email == "oda@gmail.com");
-        //    foreach (ShoppingCart userProductRelationship in shoppingCartProducts)
-        //    {
-        //        _context.ShoppingCarts.Remove(userProductRelationship);
-        //    }
-        //    _context.SaveChanges();
-        //}
+        private void ProblemNineteen()
+        {
+            // Delete all of the product relationships to the user with the email "oda@gmail.com" in the ShoppingCart table using LINQ.
+            // HINT: Loop
+            var shoppingCartProducts = _context.ShoppingCarts.Where(sc => sc.User.Email == "oda@gmail.com");
+            foreach (ShoppingCart userProductRelationship in shoppingCartProducts)
+            {
+                _context.ShoppingCarts.Remove(userProductRelationship);
+            }
+            _context.SaveChanges();
+        }
 
-        //private void ProblemTwenty()
-        //{
-        //    // Delete the user with the email "oda@gmail.com" from the Users table using LINQ.
+        private void ProblemTwenty()
+        {
+            // Delete the user with the email "oda@gmail.com" from the Users table using LINQ.
+            var user = _context.Users.Where(u => u.Email == "oda@gmail.com").SingleOrDefault();
+            _context.Users.Remove(user);
+            _context.SaveChanges();
 
-        //}
+        }
 
         //// <><><><><><><><> BONUS PROBLEMS <><><><><><><><><>
 
