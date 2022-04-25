@@ -162,17 +162,21 @@ namespace DatabaseFirstLINQ
 
             var cartTotal = _context.ShoppingCarts.Include(s => s.User).Include(s => s.Product).Where(s => s.User.Email == "oda@gmail.com").Select(s => s.Product.Price).Sum();
             Console.WriteLine(cartTotal.ToString());
-            //foreach (ShoppingCart product in cartTotal)
-            //{
-            //    Console.WriteLine($"Total: {product}");
-            //}
+   
         }
 
         //private void ProblemTen()
         //{
         //    // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
         //    // Then print the user's email as well as the product's name, price, and quantity to the console.
+            
+        //    var role = _context.Roles.Include(r => r.UserRoles).Where(r => r.RoleName == "Employee");
+        //    var users = _context.Users.Include(u => u.UserRoles).Where(u => u.UserRoles.Contains(roles));
 
+
+        //    var cart = _context.ShoppingCarts.Include(s => s.User).Include(s => s.Product).Include(s => s.User.UserRoles).Select(s => s.User.UserRoles.RoleId == 2);
+           
+                
         //}
 
         //// <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
