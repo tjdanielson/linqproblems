@@ -20,8 +20,8 @@ namespace DatabaseFirstLINQ
             //ProblemThree();
             //ProblemFour();
             //ProblemFive();
-            ProblemSix();
-            //ProblemSeven();
+            //ProblemSix();
+            ProblemSeven();
             //ProblemEight();
             //ProblemNine();
             //ProblemTen();
@@ -129,16 +129,16 @@ namespace DatabaseFirstLINQ
 
         //// <><><><><><><><> R Actions (Read) with Foreign Keys <><><><><><><><><>
 
-        //private void ProblemSeven()
-        //{
-        //    // Write a LINQ query that retreives all of the users who are assigned to the role of Customer.
-        //    // Then print the users email and role name to the console.
-        //    var customerUsers = _context.UserRoles.Include(ur => ur.Role).Include(ur => ur.User).Where(ur => ur.Role.RoleName == "Customer");
-        //    foreach (UserRole userRole in customerUsers)
-        //    {
-        //        Console.WriteLine($"Email: {userRole.User.Email} Role: {userRole.Role.RoleName}");
-        //    }
-        //}
+        private void ProblemSeven()
+        {
+            // Write a LINQ query that retreives all of the users who are assigned to the role of Customer.
+            // Then print the users email and role name to the console.
+            var customerUsers = _context.UserRoles.Include(ur => ur.Role).Include(ur => ur.User).Where(ur => ur.Role.RoleName == "Customer");
+            foreach (UserRole userRole in customerUsers)
+            {
+                Console.WriteLine($"Email: {userRole.User.Email} Role: {userRole.Role.RoleName}");
+            }
+        }
 
         //private void ProblemEight()
         //{
