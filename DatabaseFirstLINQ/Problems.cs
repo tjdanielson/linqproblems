@@ -23,9 +23,9 @@ namespace DatabaseFirstLINQ
             //ProblemSix();
             //ProblemSeven();
             //ProblemEight();
-            ProblemNine();
+            //ProblemNine();
             //ProblemTen();
-            //ProblemEleven();
+            ProblemEleven();
             //ProblemTwelve();
             //ProblemThirteen();
             //ProblemFourteen();
@@ -169,31 +169,31 @@ namespace DatabaseFirstLINQ
         //{
         //    // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
         //    // Then print the user's email as well as the product's name, price, and quantity to the console.
-            
+
         //    var role = _context.Roles.Include(r => r.UserRoles).Where(r => r.RoleName == "Employee");
         //    var users = _context.Users.Include(u => u.UserRoles).Where(u => u.UserRoles.Contains(roles));
 
 
         //    var cart = _context.ShoppingCarts.Include(s => s.User).Include(s => s.Product).Include(s => s.User.UserRoles).Select(s => s.User.UserRoles.RoleId == 2);
-           
-                
+
+
         //}
 
         //// <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
 
         //// <><> C Actions (Create) <><>
 
-        //private void ProblemEleven()
-        //{
-        //    // Create a new User object and add that user to the Users table using LINQ.
-        //    User newUser = new User()
-        //    {
-        //        Email = "david@gmail.com",
-        //        Password = "DavidsPass123"
-        //    };
-        //    _context.Users.Add(newUser);
-        //    _context.SaveChanges();
-        //}
+        private void ProblemEleven()
+        {
+            // Create a new User object and add that user to the Users table using LINQ.
+            User newUser = new User()
+            {
+                Email = "david@gmail.com",
+                Password = "DavidsPass123"
+            };
+            _context.Users.Add(newUser);
+            _context.SaveChanges();
+        }
 
         //private void ProblemTwelve()
         //{
